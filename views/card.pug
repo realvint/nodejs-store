@@ -1,0 +1,15 @@
+.col.col-md-4
+  .card
+    a(href='goods?id='+val['id'])
+      h5.card-title.text-center #{val.name}
+      img(
+        src='images/'+val.image
+        class='card-images'
+      )
+      h5.text-center #{val.cost.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ')} руб.
+        ul
+          li
+            button(
+              class='btn btn-primary add-to-cart'
+              data-goods_id=val['id']
+              ) Купить

@@ -1,0 +1,107 @@
+* {
+  font-family: sans-serif;
+}
+
+.wrap {
+  background: #fff;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.content {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
+.site-header {
+  height: auto;
+  padding: 20px 0;
+  background-color: lightsteelblue ;
+}
+
+.site-header h1 {
+  display: inline-block;
+}
+
+.full-width {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ------------card ------------------- */
+
+.card {
+  border: 1px solid #dedede;
+  width: 18rem;
+}
+
+.card-images {
+  display: block;
+  margin: 20px auto;
+  max-width: 90%;
+  min-height: 150px;
+}
+
+.goods-little-image {
+  max-width: 90%;
+  margin: 5%;
+}
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>NAV>>>>>>>>>>>> */
+
+.site-nav {
+  width: 300px;
+  min-height: 100vh;
+  position: fixed;
+  right: -300px;
+  top: 0;
+  z-index: 999999;
+  padding: 10px;
+  transition: all ease 1s;
+  color: #fff;
+  background-color: aliceblue;
+}
+
+.close-button-div {
+  text-align: right;
+}
+
+.show-nav {
+  position: relative;
+}
+
+ul.category-list {
+  list-style-type: disc;
+}
+
+ul.category-list a {
+  color: #424242;
+}
+
+.site-nav a {
+  color: #424242;
+}
+h3 {
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+  align-content: center;
+}
+
+.swal2-styled.swal2-confirm {
+  padding: 2px 20px 20px 20px;
+}

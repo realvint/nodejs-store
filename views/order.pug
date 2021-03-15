@@ -1,0 +1,62 @@
+include header.pug
+.wrap
+  .content
+    header.site-header
+      include site_header_order.pug
+    .container
+      .row
+        .col.col-md-12
+          h3.cart-header Корзина
+          div(id='cart-nav')
+        .col.col-md-12
+          h3 Оформить заказ
+        .col.col-md-6
+
+          form#store-order(action="")
+            .mb-3
+              label(for='username') Введите имя
+              input(
+                type='text',
+                id='username',
+                class="form-control"
+                placeholder='Василий',
+              )
+            .mb-3
+              label(for='phone') Укажите телефон
+              input(
+                class="form-control"
+                type='text',
+                id='phone',
+                placeholder='+79000127711',
+              )
+            .mb-3
+              label(for='email') Электропочта
+              input(
+                class="form-control"
+                type='text',
+                id='email',
+                placeholder='vasili@super.good',
+              )
+            .mb-3
+              label(for='address') Адрес доставки
+              textarea(
+                class="form-control"
+                id='address',
+                placeholder='На деревню дедушке',
+              )
+            .mb-3
+              label(for='rule')
+              input(
+                class="form-check-input"
+                type='checkbox',
+                id='rule',
+                value='1'
+              )
+              span  Галочка
+            .mb-3.text-right
+              button(class='btn btn-primary', type='submit') Создать заказ
+
+      //include nav.pug
+      include footer.pug
+      script(src='js/order.js')
+

@@ -1,8 +1,14 @@
 include header
-h2 main data
-
-each val, index in goods
-  p #{val['name']}
-  img(
-    src='images/'+ val['image']
-  )
+.wrap
+  .content
+    header.site-header
+      include site_header
+    .container
+      .row
+        .col.col-md-12
+        each val, index in category
+          a(href='categories?id='+val['id'])
+            p #{val['category']}
+            img(
+              src='images/'+ val['image']
+            )

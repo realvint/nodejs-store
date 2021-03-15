@@ -1,0 +1,18 @@
+include header
+.wrap
+  .content
+    header.site-header
+      include site_header
+    .container
+      .row
+        each val2, idx2 in cat
+          .col.col-lg-12
+            h2
+              a(
+                href='/categories?id='+val2['id']
+              ) #{val2['category']}
+          each val, idx in goods
+            if val2['id'] === val['category']
+              include card
+  include nav
+  include footer
