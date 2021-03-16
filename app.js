@@ -117,7 +117,7 @@ app.post('/finish-order', function (req, res){
       connectionDb.query(
         'SELECT id, name, cost FROM goods WHERE id IN (' + key.join(',')+')', function (error, result, fields){
           if (error) throw error
-            sendMail(req.body, result).catch(console.error)
+            sendEmail(req.body, result).catch(console.error)
             res.send('1')
         })
     } else {
@@ -125,7 +125,7 @@ app.post('/finish-order', function (req, res){
     }
 })
 
-async function sendMail(data, result) {
+async function sendEmail(data, result) {
   let res = '<h3>Новый заказ</h3>'
   let total = 0
   for (let i = 0; i< result.length; i++){
@@ -133,4 +133,32 @@ async function sendMail(data, result) {
     total += result[i]['cost'] *data.key[result[i]['id']]
   }
   console.log(res)
+  res += '<hr>'
+  res += `Итого: ${total} руб.`
+  res += `<hr> Телефон: ${data.phone}`
+  res += `<hr> Имя: ${data.username}`
+  res += `<hr> Адрес: ${data.address}`
+  res += `<hr> Почта: ${data.email}`
+  let testAccount = await nodemailer.createTestAccount()
+
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    secure: false,
+    auth: {
+      user: testAccount.user,
+      pass: testAccount.pass
+    }
+  })
+  let mailOption = {
+    from: '<test@rem69.ru>',
+    to: 'test@rem69.ru,'+data.email,
+    subject: 'магазин',
+    text: 'заказик',
+    html: res
+  }
+  let info = await transporter.sendMail(mailOption)
+  console.log("MessageSent: %s", info.messageId)
+  console.log("PreviewSent: %s", nodemailer.getTestMessageUrl(info))
+  return true
 }
